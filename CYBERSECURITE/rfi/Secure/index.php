@@ -18,15 +18,14 @@
     
     <?php
         $allowedPages = [
-            'page1.php' => 'hash1', // Ajoutez le hachage pour chaque fichier autorisé
-            'page2.php' => 'hash2'
+            'page1.php' => '420691787a35e4a091b4b9eb4b3e83387c6b4916ce7c8729fda6792d1604b0f5', // Ajoutez le hachage pour chaque fichier autorisé
         ];
 
         $pageToInclude = $_GET['page'];
 
         // Vérifier si la page demandée est autorisée
         if (array_key_exists($pageToInclude, $allowedPages)) {
-            $filePath = "./pages/" . $pageToInclude; // Ajouter un préfixe de chemin sécurisé
+            $filePath = $pageToInclude; // Ajouter un préfixe de chemin sécurisé
 
             // Vérifier l'intégrité du fichier à l'aide du hachage
             if (file_exists($filePath) && is_file($filePath) && hash_file('sha256', $filePath) === $allowedPages[$pageToInclude]) {

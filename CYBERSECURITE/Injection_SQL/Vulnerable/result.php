@@ -1,4 +1,11 @@
 <?php
+// Remplacez les informations de connexion par les vôtres
+$conn = mysqli_connect("localhost:8889", "yannis_admin", "jesuisadmin", "yannis_php");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // Récupérer la valeur du champ username
     $username = $_GET["username"];
